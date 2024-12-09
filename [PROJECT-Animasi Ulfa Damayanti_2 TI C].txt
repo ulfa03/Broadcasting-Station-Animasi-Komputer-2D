@@ -1,0 +1,1350 @@
+import bpy
+import bmesh
+import math
+import mathutils
+import random
+import os
+
+verts = [(40,40,0),(-40,40,0),(-40,-40,0),(40,-40,0)]
+faces = [(0,1,2,3)]
+
+alas = bpy.data.meshes.new("Alas")
+alas.from_pydata(verts,[],faces)
+alas.update()
+
+objek = bpy.data.objects.new("Alas", alas)
+
+if "Material Alas" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Alas")
+    material.diffuse_color = (10.878,28.244,40.460,1)
+
+objek.active_material = bpy.data.materials["Material Alas"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(-32,-30,0.1),(32,-30,0.1),(32,-26,0.1),(-32,-26,0.1)]
+faces = [(0,1,2,3)]
+
+rumput = bpy.data.meshes.new("Rumput")
+rumput.from_pydata(verts,[],faces)
+rumput.update()
+
+objek = bpy.data.objects.new("Rumput", rumput)
+
+if "Material Rumput" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Rumput")
+    material.diffuse_color = (1.594,40.460,0.831,1)
+
+objek.active_material = bpy.data.materials["Material Rumput"]
+bpy.context.collection.objects.link(objek)
+
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=2,location=(32,-28,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=2,location=(-32,-28,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-30,-31,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Alas"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-5,-31,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Alas"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-30,-33,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Bawah Rumput"])
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-5,-33,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Bawah Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+verts = [(-30,-30,0.1),(-5,-30,0.1),(-5,-34,0.1),(-30,-34,0.1)]
+faces = [(0,1,2,3)]
+
+underrumput = bpy.data.meshes.new("Bawah Rumput")
+underrumput.from_pydata(verts,[],faces)
+underrumput.update()
+
+objek = bpy.data.objects.new("Bawah Rumput", underrumput)
+
+if "Material Bawah Rumput" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Bawah Rumput")
+    material.diffuse_color = (4.242,4.242,4.242,1)
+
+objek.active_material = bpy.data.materials["Material Bawah Rumput"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(-29,-26,0.1),(-28,-26,0.1),(-28,-20,0.1),(-29,-20,0.1)]
+faces = [(0,1,2,3)]
+
+rumput = bpy.data.meshes.new("Kayu")
+rumput.from_pydata(verts,[],faces)
+rumput.update()
+
+objek = bpy.data.objects.new("Kayu", rumput)
+
+if "Material Kayu" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Kayu")
+    material.diffuse_color = (0.07,0.983,5.795,1)
+
+objek.active_material = bpy.data.materials["Material Kayu"]
+bpy.context.collection.objects.link(objek)
+
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-28.5,-20.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-28,-20.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-27.5,-20.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-29,-20.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-29.5,-20.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-28.5,-20,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-28,-20,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-27.5,-20,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-29,-20,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-29.5,-20,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-28.5,-19.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-28,-19.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-27.5,-19.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-29,-19.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-29.5,-19.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-28.5,-19,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-28,-19,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-27.5,-19,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-29,-19,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-29.5,-19,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-28.5,-18.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-28,-18.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-27.5,-18.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-29,-18.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+bpy.ops.mesh.primitive_circle_add(vertices=32,radius=1,location=(-29.5,-18.5,0.1))
+obj = bpy.context.object
+obj.data.materials.append(bpy.data.materials["Material Rumput"])
+
+# Akses objek mesh yang terkait
+mesh = obj.data
+
+# Mulai mode edit
+bpy.context.view_layer.objects.active = obj
+bpy.ops.object.mode_set(mode='EDIT')
+
+# Pilih semua verteks
+bpy.ops.mesh.select_all(action='SELECT')
+
+# Buat wajah
+bpy.ops.mesh.edge_face_add()
+
+# Selesaikan mode edit
+bpy.ops.object.mode_set(mode='OBJECT')
+
+verts = [(-17.5,-26,0.1),(27.5,-26,0.1),(27.5,-15,0.1),(-17.5,-15,0.1)]
+faces = [(0,1,2,3)]
+
+b = bpy.data.meshes.new("Bangunan Bawah")
+b.from_pydata(verts,[],faces)
+b.update()
+
+objek = bpy.data.objects.new("Bangunan Bawah", b)
+
+if "Material Bangunan" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Bangunan")
+    material.diffuse_color = (0.140006,0.577272,40.46,1)
+
+objek.active_material = bpy.data.materials["Material Bangunan"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(-19.5,-15,0.1),(29.5,-15,0.1),(29.5,-14,0.1),(-19.5,-14,0.1)]
+faces = [(0,1,2,3)]
+
+b = bpy.data.meshes.new("Atap Bangunan Bawah")
+b.from_pydata(verts,[],faces)
+b.update()
+
+objek = bpy.data.objects.new("Atap Bangunan Bawah", b)
+
+if "Material Atap" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Atap")
+    material.diffuse_color = (0.002,0.979,40.46,1)
+
+objek.active_material = bpy.data.materials["Material Atap"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(12,-14,0.1),(27.5,-14,0.1),(27.5,0,0.1),(12,0,0.1)]
+faces = [(0,1,2,3)]
+
+b = bpy.data.meshes.new("Bangunan Kanan Atas")
+b.from_pydata(verts,[],faces)
+b.update()
+
+objek = bpy.data.objects.new("Bangunan Kanan Atas", b)
+
+if "Material Bangunan" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Bangunan")
+    material.diffuse_color = (0.140006,0.577272,40.46,1)
+
+objek.active_material = bpy.data.materials["Material Bangunan"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(29.5,0,0.1),(12,0,0.1),(12,1,0.1),(29.5,1,0.1)]
+faces = [(0,1,2,3)]
+
+b = bpy.data.meshes.new("Atap Bangunan Kanan Atas")
+b.from_pydata(verts,[],faces)
+b.update()
+
+objek = bpy.data.objects.new("Atap Bangunan Bawah", b)
+
+if "Material Atap" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Atap")
+    material.diffuse_color = (0.002,0.979,40.46,1)
+
+objek.active_material = bpy.data.materials["Material Atap"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(-4,-14,0.1),(12,-14,0.1),(12,14,0.1),(-4,14,0.1)]
+faces = [(0,1,2,3)]
+
+b = bpy.data.meshes.new("Bangunan Tengah Atas")
+b.from_pydata(verts,[],faces)
+b.update()
+
+objek = bpy.data.objects.new("Bangunan Tengah Atas", b)
+
+if "Material Bangunan" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Bangunan")
+    material.diffuse_color = (0.140006,0.577272,40.46,1)
+
+objek.active_material = bpy.data.materials["Material Bangunan"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(-6,14,0.1),(14,14,0.1),(14,15,0.1),(-6,15,0.1)]
+faces = [(0,1,2,3)]
+
+b = bpy.data.meshes.new("Atap Bangunan Tengah Atas")
+b.from_pydata(verts,[],faces)
+b.update()
+
+objek = bpy.data.objects.new("Atap Bangunan Tengah Atas", b)
+
+if "Material Atap" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Atap")
+    material.diffuse_color = (0.002,0.979,40.46,1)
+
+objek.active_material = bpy.data.materials["Material Atap"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(26.5, -7, 0.1), (20, -7, 0.1), (20, -1, 0.1), (26.5, -1, 0.1)]
+faces = [(0, 1, 2, 3)]
+
+# Buat mesh baru
+b = bpy.data.meshes.new("Kaca Bangunan Tengah Atas")
+b.from_pydata(verts, [], faces)
+b.update()
+
+# Buat objek dari mesh
+objek = bpy.data.objects.new("Kaca Bangunan Tengah Atas", b)
+
+# Cek apakah material "Material Kaca" sudah ada, jika belum buat baru
+material_name = "Material Kaca"
+if material_name not in bpy.data.materials:
+    material = bpy.data.materials.new(name=material_name)
+else:
+    material = bpy.data.materials[material_name]
+
+# Hubungkan material "Material Kaca" ke objek
+objek.active_material = material
+
+# Tambahkan objek ke koleksi (collection)
+bpy.context.collection.objects.link(objek)
+
+# Ubah material "Material Kaca" menjadi image texture
+material.use_nodes = True
+material.node_tree.nodes.clear()
+
+# Tambahkan image texture ke material (jika belum ada)
+if not any(node.type == "TEX_IMAGE" for node in material.node_tree.nodes):
+    texture_path = r"D:\animasi\glass-window.jpg"
+    if os.path.exists(texture_path):
+        image_texture = bpy.data.images.load(texture_path)
+        texture_node = material.node_tree.nodes.new(type="ShaderNodeTexImage")
+        texture_node.image = image_texture
+        material_output_node = material.node_tree.nodes.new(type="ShaderNodeOutputMaterial")
+        material.node_tree.links.new(texture_node.outputs["Color"], material_output_node.inputs["Surface"])
+
+verts = [(19,-7,0.1),(13,-7,0.1),(13,-1,0.1),(19,-1,0.1)]
+faces = [(0,1,2,3)]
+
+# Buat mesh baru
+b = bpy.data.meshes.new("Kaca Bangunan Tengah Atas")
+b.from_pydata(verts, [], faces)
+b.update()
+
+# Buat objek dari mesh
+objek = bpy.data.objects.new("Kaca Bangunan Tengah Atas", b)
+
+# Cek apakah material "Material Kaca" sudah ada, jika belum buat baru
+material_name = "Material Kaca"
+if material_name not in bpy.data.materials:
+    material = bpy.data.materials.new(name=material_name)
+else:
+    material = bpy.data.materials[material_name]
+
+# Hubungkan material "Material Kaca" ke objek
+objek.active_material = material
+
+# Tambahkan objek ke koleksi (collection)
+bpy.context.collection.objects.link(objek)
+
+# Ubah material "Material Kaca" menjadi image texture
+material.use_nodes = True
+material.node_tree.nodes.clear()
+
+# Tambahkan image texture ke material (jika belum ada)
+if not any(node.type == "TEX_IMAGE" for node in material.node_tree.nodes):
+    texture_path = r"D:\animasi\glass-window.jpg"
+    if os.path.exists(texture_path):
+        image_texture = bpy.data.images.load(texture_path)
+        texture_node = material.node_tree.nodes.new(type="ShaderNodeTexImage")
+        texture_node.image = image_texture
+        material_output_node = material.node_tree.nodes.new(type="ShaderNodeOutputMaterial")
+        material.node_tree.links.new(texture_node.outputs["Color"], material_output_node.inputs["Surface"])
+
+# Nama objek teks yang akan dibuat
+nama_objek_teks = "Broadcasting Station"
+
+# Teks yang ingin Anda masukkan
+teks = "Broadcasting\nStation"
+
+# Buat objek teks baru
+bpy.ops.object.text_add(location=(19.5, -10, 2))
+teks_objek = bpy.context.object
+teks_objek.name = nama_objek_teks
+teks_objek.data.body = teks
+teks_objek.data.size = 2.5
+bpy.context.object.data.align_x = 'CENTER'
+
+verts = [(-2.3,-13,0.1),(10.5,-13,0.1),(10.5,13,0.1),(-2.3,13,0.1)]
+faces = [(0,1,2,3)]
+
+# Buat mesh baru
+b = bpy.data.meshes.new("Kaca Bangunan Tengah")
+b.from_pydata(verts, [], faces)
+b.update()
+
+# Buat objek dari mesh
+objek = bpy.data.objects.new("Kaca Bangunan Tengah", b)
+
+# Cek apakah material "Material Kaca" sudah ada, jika belum buat baru
+material_name = "Material Kaca"
+if material_name not in bpy.data.materials:
+    material = bpy.data.materials.new(name=material_name)
+else:
+    material = bpy.data.materials[material_name]
+
+# Hubungkan material "Material Kaca" ke objek
+objek.active_material = material
+
+# Tambahkan objek ke koleksi (collection)
+bpy.context.collection.objects.link(objek)
+
+# Ubah material "Material Kaca" menjadi image texture
+material.use_nodes = True
+material.node_tree.nodes.clear()
+
+# Tambahkan image texture ke material (jika belum ada)
+if not any(node.type == "TEX_IMAGE" for node in material.node_tree.nodes):
+    texture_path = r"D:\animasi\glass-window.jpg"
+    if os.path.exists(texture_path):
+        image_texture = bpy.data.images.load(texture_path)
+        texture_node = material.node_tree.nodes.new(type="ShaderNodeTexImage")
+        texture_node.image = image_texture
+        material_output_node = material.node_tree.nodes.new(type="ShaderNodeOutputMaterial")
+        material.node_tree.links.new(texture_node.outputs["Color"], material_output_node.inputs["Surface"])
+
+verts = [(-1,-25.5,0.1),(9,-25.5,0.1),(9,-18,0.1),(-1,-18,0.1)]
+faces = [(0,1,2,3)]
+
+# Buat mesh baru
+b = bpy.data.meshes.new("Kaca Bangunan Tengah Bawah")
+b.from_pydata(verts, [], faces)
+b.update()
+
+# Buat objek dari mesh
+objek = bpy.data.objects.new("Kaca Bangunan Tengah Bawah", b)
+
+# Cek apakah material "Material Kaca" sudah ada, jika belum buat baru
+material_name = "Material Kaca"
+if material_name not in bpy.data.materials:
+    material = bpy.data.materials.new(name=material_name)
+else:
+    material = bpy.data.materials[material_name]
+
+# Hubungkan material "Material Kaca" ke objek
+objek.active_material = material
+
+# Tambahkan objek ke koleksi (collection)
+bpy.context.collection.objects.link(objek)
+
+# Ubah material "Material Kaca" menjadi image texture
+material.use_nodes = True
+material.node_tree.nodes.clear()
+
+# Tambahkan image texture ke material (jika belum ada)
+if not any(node.type == "TEX_IMAGE" for node in material.node_tree.nodes):
+    texture_path = r"D:\animasi\glass-window.jpg"
+    if os.path.exists(texture_path):
+        image_texture = bpy.data.images.load(texture_path)
+        texture_node = material.node_tree.nodes.new(type="ShaderNodeTexImage")
+        texture_node.image = image_texture
+        material_output_node = material.node_tree.nodes.new(type="ShaderNodeOutputMaterial")
+        material.node_tree.links.new(texture_node.outputs["Color"], material_output_node.inputs["Surface"])
+
+verts = [(-16.5,-22.5,0.1),(-11,-22.5,0.1),(-11,-16,0.1),(-16.5,-16,0.1)]
+faces = [(0,1,2,3)]
+
+# Buat mesh baru
+b = bpy.data.meshes.new("Kaca Bangunan Kiri Bawah")
+b.from_pydata(verts, [], faces)
+b.update()
+
+# Buat objek dari mesh
+objek = bpy.data.objects.new("Kaca Bangunan Kiri Bawah", b)
+
+# Cek apakah material "Material Kaca" sudah ada, jika belum buat baru
+material_name = "Material Kaca"
+if material_name not in bpy.data.materials:
+    material = bpy.data.materials.new(name=material_name)
+else:
+    material = bpy.data.materials[material_name]
+
+# Hubungkan material "Material Kaca" ke objek
+objek.active_material = material
+
+# Tambahkan objek ke koleksi (collection)
+bpy.context.collection.objects.link(objek)
+
+# Ubah material "Material Kaca" menjadi image texture
+material.use_nodes = True
+material.node_tree.nodes.clear()
+
+# Tambahkan image texture ke material (jika belum ada)
+if not any(node.type == "TEX_IMAGE" for node in material.node_tree.nodes):
+    texture_path = r"D:\animasi\glass-window.jpg"
+    if os.path.exists(texture_path):
+        image_texture = bpy.data.images.load(texture_path)
+        texture_node = material.node_tree.nodes.new(type="ShaderNodeTexImage")
+        texture_node.image = image_texture
+        material_output_node = material.node_tree.nodes.new(type="ShaderNodeOutputMaterial")
+        material.node_tree.links.new(texture_node.outputs["Color"], material_output_node.inputs["Surface"])
+
+verts = [(-10.5,-22.5,0.1),(-5,-22.5,0.1),(-5,-16,0.1),(-10.5,-16,0.1)]
+faces = [(0,1,2,3)]
+
+# Buat mesh baru
+b = bpy.data.meshes.new("Kaca Bangunan Kiri Bawah")
+b.from_pydata(verts, [], faces)
+b.update()
+
+# Buat objek dari mesh
+objek = bpy.data.objects.new("Kaca Bangunan Kiri Bawah", b)
+
+# Cek apakah material "Material Kaca" sudah ada, jika belum buat baru
+material_name = "Material Kaca"
+if material_name not in bpy.data.materials:
+    material = bpy.data.materials.new(name=material_name)
+else:
+    material = bpy.data.materials[material_name]
+
+# Hubungkan material "Material Kaca" ke objek
+objek.active_material = material
+
+# Tambahkan objek ke koleksi (collection)
+bpy.context.collection.objects.link(objek)
+
+# Ubah material "Material Kaca" menjadi image texture
+material.use_nodes = True
+material.node_tree.nodes.clear()
+
+# Tambahkan image texture ke material (jika belum ada)
+if not any(node.type == "TEX_IMAGE" for node in material.node_tree.nodes):
+    texture_path = r"D:\animasi\glass-window.jpg"
+    if os.path.exists(texture_path):
+        image_texture = bpy.data.images.load(texture_path)
+        texture_node = material.node_tree.nodes.new(type="ShaderNodeTexImage")
+        texture_node.image = image_texture
+        material_output_node = material.node_tree.nodes.new(type="ShaderNodeOutputMaterial")
+        material.node_tree.links.new(texture_node.outputs["Color"], material_output_node.inputs["Surface"])
+
+verts = [(19,-22.5,0.1),(13,-22.5,0.1),(13,-16,0.1),(19,-16,0.1)]
+faces = [(0,1,2,3)]
+
+# Buat mesh baru
+b = bpy.data.meshes.new("Kaca Bangunan Kiri Bawah")
+b.from_pydata(verts, [], faces)
+b.update()
+
+# Buat objek dari mesh
+objek = bpy.data.objects.new("Kaca Bangunan Kiri Bawah", b)
+
+# Cek apakah material "Material Kaca" sudah ada, jika belum buat baru
+material_name = "Material Kaca"
+if material_name not in bpy.data.materials:
+    material = bpy.data.materials.new(name=material_name)
+else:
+    material = bpy.data.materials[material_name]
+
+# Hubungkan material "Material Kaca" ke objek
+objek.active_material = material
+
+# Tambahkan objek ke koleksi (collection)
+bpy.context.collection.objects.link(objek)
+
+# Ubah material "Material Kaca" menjadi image texture
+material.use_nodes = True
+material.node_tree.nodes.clear()
+
+# Tambahkan image texture ke material (jika belum ada)
+if not any(node.type == "TEX_IMAGE" for node in material.node_tree.nodes):
+    texture_path = r"D:\animasi\glass-window.jpg"
+    if os.path.exists(texture_path):
+        image_texture = bpy.data.images.load(texture_path)
+        texture_node = material.node_tree.nodes.new(type="ShaderNodeTexImage")
+        texture_node.image = image_texture
+        material_output_node = material.node_tree.nodes.new(type="ShaderNodeOutputMaterial")
+        material.node_tree.links.new(texture_node.outputs["Color"], material_output_node.inputs["Surface"])
+       
+verts = [(26.5,-22.5,0.1),(20,-22.5,0.1),(20,-16,0.1),(26.5,-16,0.1)]
+faces = [(0,1,2,3)]
+
+# Buat mesh baru
+b = bpy.data.meshes.new("Kaca Bangunan Kiri Bawah")
+b.from_pydata(verts, [], faces)
+b.update()
+
+# Buat objek dari mesh
+objek = bpy.data.objects.new("Kaca Bangunan Kiri Bawah", b)
+
+# Cek apakah material "Material Kaca" sudah ada, jika belum buat baru
+material_name = "Material Kaca"
+if material_name not in bpy.data.materials:
+    material = bpy.data.materials.new(name=material_name)
+else:
+    material = bpy.data.materials[material_name]
+
+# Hubungkan material "Material Kaca" ke objek
+objek.active_material = material
+
+# Tambahkan objek ke koleksi (collection)
+bpy.context.collection.objects.link(objek)
+
+# Ubah material "Material Kaca" menjadi image texture
+material.use_nodes = True
+material.node_tree.nodes.clear()
+
+# Tambahkan image texture ke material (jika belum ada)
+if not any(node.type == "TEX_IMAGE" for node in material.node_tree.nodes):
+    texture_path = r"D:\animasi\glass-window.jpg"
+    if os.path.exists(texture_path):
+        image_texture = bpy.data.images.load(texture_path)
+        texture_node = material.node_tree.nodes.new(type="ShaderNodeTexImage")
+        texture_node.image = image_texture
+        material_output_node = material.node_tree.nodes.new(type="ShaderNodeOutputMaterial")
+        material.node_tree.links.new(texture_node.outputs["Color"], material_output_node.inputs["Surface"])
+        
+bpy.ops.mesh.primitive_circle_add(vertices=3,radius=3,location=(23.5,2.5,0.1),fill_type="NGON")
+
+obj = bpy.context.object
+obj.name = "Penyangga Parabola"
+
+# Cek apakah material "Putih" sudah ada, jika belum buat baru
+material_name = "Putih"
+if material_name not in bpy.data.materials:
+    material = bpy.data.materials.new(name=material_name)
+    material.diffuse_color = (0, 0, 1, 1)  # Warna putih (RGB: 1,1,1)
+else:
+    material = bpy.data.materials[material_name]
+
+# Tambahkan material "Putih" ke objek lingkaran
+if obj.data.materials:
+    obj.data.materials[0] = material
+else:
+    obj.data.materials.append(material)
+    
+    
+bpy.ops.mesh.primitive_circle_add(vertices=32, radius=3, fill_type='NGON', location=(25, 6, 0.11))
+obj = bpy.context.active_object
+
+# Cek apakah material "Putih" sudah ada, jika belum buat baru
+material_name = "Material.001"
+if material_name not in bpy.data.materials:
+    material = bpy.data.materials.new(name=material_name)
+    material.diffuse_color = (0, 0, 1, 1)  # Warna putih (RGB: 1,1,1)
+else:
+    material = bpy.data.materials[material_name]
+
+# Tambahkan material "Putih" ke objek lingkaran
+if obj.data.materials:
+    obj.data.materials[0] = material
+else:
+    obj.data.materials.append(material)
+bpy.ops.mesh.primitive_circle_add(vertices=4,radius=5,fill_type='NGON',location=(27,8,0.2))
+obj = bpy.context.active_object
+material_name = "Material Alas"
+material = bpy.data.materials[material_name]
+
+# Tambahkan material "Putih" ke objek lingkaran
+if obj.data.materials:
+    obj.data.materials[0] = material
+else:
+    obj.data.materials.append(material)
+
+bpy.ops.mesh.primitive_circle_add(vertices=32, radius=0.3, fill_type='NGON', location=(26.3,7.1,0.3))
+obj = bpy.context.active_object
+
+verts = [(26.3,7.2,0.4),(24.3,5,0.4),(24.3,4.8,0.4),(26.3,7,0.4)]
+faces = [(0,1,2,3)]
+
+b = bpy.data.meshes.new("Antena Parabola")
+b.from_pydata(verts,[],faces)
+b.update()
+
+objek = bpy.data.objects.new("Bangunan Kanan Atas", b)
+
+if "Material.001" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material.001")
+    material.diffuse_color = (0.140006,0.577272,40.46,1)
+
+objek.active_material = bpy.data.materials["Material.001"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(26.3,7,0.4),(26,3.6,0.4),(26.1,3.6,0.4),(26.4,7,0.4)]
+faces = [(0,1,2,3)]
+
+b = bpy.data.meshes.new("Antena Parabola")
+b.from_pydata(verts,[],faces)
+b.update()
+
+objek = bpy.data.objects.new("Bangunan Kanan Atas", b)
+
+if "Material.001" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material.001")
+    material.diffuse_color = (0.140006,0.577272,40.46,1)
+
+objek.active_material = bpy.data.materials["Material.001"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(26.3,7,0.4),(22.3,6.7,0.4),(22.3,6.8,0.4),(26.3,7.1,0.4)]
+faces = [(0,1,2,3)]
+
+b = bpy.data.meshes.new("Antena Parabola")
+b.from_pydata(verts,[],faces)
+b.update()
+
+objek = bpy.data.objects.new("Bangunan Kanan Atas", b)
+
+if "Material.001" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material.001")
+    material.diffuse_color = (0.140006,0.577272,40.46,1)
+
+objek.active_material = bpy.data.materials["Material.001"]
+bpy.context.collection.objects.link(objek)
+
+def copy_object(obj,location,scale):
+    obj_copy = obj.copy()
+    obj_copy.data = obj.data.copy()
+    
+    bpy.context.collection.objects.link(obj_copy)
+    
+    obj_copy.location = location
+    obj_copy.scale.x *= scale
+    obj_copy.scale.y *= scale
+    obj_copy.scale.z *= scale
+
+    return obj_copy
+
+obj_to_copy = bpy.data.objects.get("Signal")
+signal1 = copy_object(obj_to_copy,(26.3,7.1,0.3),2)
+signal2 = copy_object(obj_to_copy,(26.3,7.1,0.3),4)
+signal3 = copy_object(obj_to_copy,(26.3,7.1,0.3),6)
+
+obj_to_copy = bpy.data.objects.get("burung")
+burung1 = copy_object(obj_to_copy,(-20,20,0.3),2)
+burung2 = copy_object(obj_to_copy,(-27,15,0.3),1.5)
+burung3 = copy_object(obj_to_copy,(-32,25,0.3),1.75)
+
+def copy_objects(obj,location,scale):
+    obj_copy = obj.copy()
+    obj_copy.data = obj.data.copy()
+    
+    bpy.context.collection.objects.link(obj_copy)
+    
+    obj_copy.location = location
+    obj_copy.scale.x *= scale
+    obj_copy.scale.y *= scale
+    obj_copy.scale.z *= scale
+
+    return obj_copy
+def animate_cloud_translation(obj, start_location_x, end_location_x, num_frames):
+    end_location_x += obj.location.x
+    frame_step = (start_location_x - end_location_x) / num_frames
+
+    for frame in range(num_frames + 1):
+        location_x = start_location_x - (frame * frame_step)
+        obj.location.x = location_x
+        obj.keyframe_insert(data_path="location", frame=frame)
+
+    bpy.context.scene.frame_end = num_frames
+
+bpy.ops.mesh.primitive_circle_add(vertices=32, radius=1, fill_type='NGON', location=(30, 30, 0.1))
+obj = bpy.context.active_object
+
+material_name = "Material Bangunan"
+material = bpy.data.materials[material_name]
+obj.data.materials.append(material)
+    
+obj_to_copy = bpy.data.objects.get("Circle.034")
+copied_obj = copy_objects(obj_to_copy,(29.5, 30, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+copied_obj = copy_objects(obj_to_copy,(29, 30, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+copied_obj = copy_objects(obj_to_copy,(28.5, 30, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+copied_obj = copy_objects(obj_to_copy,(28, 30, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+copied_obj = copy_objects(obj_to_copy,(27.5, 30, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+copied_obj = copy_objects(obj_to_copy,(27, 30, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+copied_obj = copy_objects(obj_to_copy,(26.5, 30, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+copied_obj = copy_objects(obj_to_copy,(26, 30, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+
+copied_obj = copy_objects(obj_to_copy,(29, 30.5, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+copied_obj = copy_objects(obj_to_copy,(28, 30.5, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+copied_obj = copy_objects(obj_to_copy,(27, 30.5, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+
+copied_obj = copy_objects(obj_to_copy,(27.5, 31, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+copied_obj = copy_objects(obj_to_copy,(28.5, 31, 0.1),1)
+animate_cloud_translation(copied_obj, copied_obj.location.x, 10, 100)
+
+animate_cloud_translation(obj, obj.location.x, 10, 100)
+
+animate_cloud_translation(burung1, burung1.location.x, 10, 100)
+animate_cloud_translation(burung2, burung1.location.x, 10, 100)
+animate_cloud_translation(burung3, burung1.location.x, 10, 100)
+
+
+def animate_object_z_axis(obj_name, start_frame, end_frame, start_z, end_z):
+    # Cari objek berdasarkan namanya
+    obj = bpy.data.objects.get(obj_name)
+
+    # Hapus keyframe yang sudah ada di sumbu Z
+    obj.animation_data_clear()
+
+    # Amplitudo pergerakan di sumbu Z
+    amplitude = (end_z - start_z) * 0.5
+
+    for frame in range(start_frame, end_frame + 1):
+        # Hitung nilai Z berdasarkan frame menggunakan fungsi sinus
+        t = (frame - start_frame) / (end_frame - start_frame)
+        z_value = start_z + amplitude * math.sin(2 * math.pi * t)
+
+        # Set nilai Z pada objek dan buat keyframe pada setiap frame
+        obj.location.z = z_value
+        obj.keyframe_insert(data_path='location', frame=frame, index=2)
+
+animate_object_z_axis("Signal.001", 0, 100, -0.3, 0.3 + 0.5)
+animate_object_z_axis("Signal.002", 0, 125, -0.3, 0.3 + 0.8)
+animate_object_z_axis("Signal.003", 0, 150, -0.3, 0.3 + 0.12)
+
+verts = [(-25,-25,0.3),(-25,-23,0.3),(-21,-23,0.3),(-21,-25,0.3)]
+faces = [(0,1,2,3)]
+
+rumput = bpy.data.meshes.new("Kursi")
+rumput.from_pydata(verts,[],faces)
+rumput.update()
+
+objek = bpy.data.objects.new("Kursi", rumput)
+
+if "Material Kayu" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Kayu")
+    material.diffuse_color = (0.07,0.983,5.795,1)
+
+objek.active_material = bpy.data.materials["Material Kayu"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(-25.2,-25.4,0.3),(-25,-25,0.3),(-21,-25,0.3),(-20.8,-25.4,0.3)]
+faces = [(0,1,2,3)]
+
+rumput = bpy.data.meshes.new("Kursi")
+rumput.from_pydata(verts,[],faces)
+rumput.update()
+
+objek = bpy.data.objects.new("Kursi", rumput)
+
+if "Material Kayu" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Kayu")
+    material.diffuse_color = (0.07,0.983,5.795,1)
+
+objek.active_material = bpy.data.materials["Material Kayu"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(-25,-26,0.3),(-25,-25.4,0.3),(-24.7,-25.4,0.3),(-24.7,-26,0.3)]
+faces = [(0,1,2,3)]
+
+rumput = bpy.data.meshes.new("Kursi")
+rumput.from_pydata(verts,[],faces)
+rumput.update()
+
+objek = bpy.data.objects.new("Kursi", rumput)
+
+if "Material Kayu" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Kayu")
+    material.diffuse_color = (0.07,0.983,5.795,1)
+
+objek.active_material = bpy.data.materials["Material Kayu"]
+bpy.context.collection.objects.link(objek)
+
+verts = [(-21.3,-26,0.3),(-21.3,-25.4,0.3),(-21,-25.4,0.3),(-21,-26,0.3)]
+faces = [(0,1,2,3)]
+
+rumput = bpy.data.meshes.new("Kursi")
+rumput.from_pydata(verts,[],faces)
+rumput.update()
+
+objek = bpy.data.objects.new("Kursi", rumput)
+
+if "Material Kayu" not in bpy.data.materials :
+    material = bpy.data.materials.new("Material Kayu")
+    material.diffuse_color = (0.07,0.983,5.795,1)
+
+objek.active_material = bpy.data.materials["Material Kayu"]
+bpy.context.collection.objects.link(objek)
